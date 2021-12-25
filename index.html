@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Les Petits Plats</title>
+    </head>
+
+    <body>
+        <header role="banner" class="header">
+            <img role="img" class="header__img" src="images/logoLPP.png" alt="Logo de l'entreprise"/>
+            <nav role="navigation" aria-label="navigation principale" class="header__nav">
+                <input class="header__nav__input" type="search" id="completeSearch" name="completeSearch" aria-label="Rechercher un élément sur tout le site" placeholder="Rechercher un ingrédient, appareil, ustensiles ou recette">
+                <button class="header__nav__btn" type="button" aria-label="Rechercher">Rechercher</button>
+            </nav>
+        </header>
+
+        <main>
+            <nav role="navigation" aria-label="navigation secondaire">
+                <input type="search" id="searchByIngredient" name="searchByIngredient" aria-label="Rechercher un ingrédient" placeholder="Ingrédient">
+                <input type="search" id="searchByDevice" name="searchByDevice" aria-label="Rechercher un appareil" placeholder="Appareil">
+                <input type="search" id="searchByUtensils" name="searchByUtensils" aria-label="Rechercher un ustensiles" placeholder="Ustensiles">
+            </nav>
+
+            <section class="content">
+                <!-- Affichage automatique des recettes avec du JSON -->
+            </section>
+        </main>
+    </body>
+</html>
