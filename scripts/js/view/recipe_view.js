@@ -10,15 +10,16 @@ class RecipeView
     createDomElement()
     {
         //Récupération du container
-        let container = document.querySelector('.content');
+        let container = document.querySelector('.main__content');
 
         //Boucle sur les recettes
         this.recipes.forEach(recipe => {
 
-            console.log(recipe);
-
             //Création de l'article
             let article = document.createElement("article");
+
+            //Ajout d'une classe
+            article.classList.add("main__content__recipe-card");
 
             //Ajout de l'article à la section
             container.appendChild(article);
@@ -26,21 +27,21 @@ class RecipeView
             let htmlSegment =
 
             `
-                <img src="https://via.placeholder.com/350x150?text=Work+In+Progress" alt="placeholder - image de la recette."/>
-                <div>
-                    <h2>${recipe.name}</h2>
-                    <p>${recipe.time} min</p>
+                <img class="main__content__recipe-card__img" src="https://via.placeholder.com/700x250?text=Work+In+Progress" alt="placeholder - image de la recette."/>
+                <div class="main__content__recipe-card__primary-information-container">
+                    <h2 class="main__content__recipe-card__information-container__title">${recipe.name}</h2>
+                    <p class="main__content__recipe-card__information-container__time"><i class="far fa-clock"></i> ${recipe.time} min</p>
                 </div>
 
-                <div>
-                    <div>
-                        <ul class="ingredients">
+                <div class="main__content__recipe-card__secondary-information-container">
+                    <div class="main__content__recipe-card__secondary-information-container__list-keeper">
+                        <ul class="main__content__recipe-card__secondary-information-container__list-keeper__ingredients">
                 
                         </ul>
                     </div>
 
-                    <div>
-                        <p>${recipe.description}</p>
+                    <div class="main__content__recipe-card__secondary-information-container__text-keeper">
+                        <p class="main__content__recipe-card__secondary-information-container__text-keeper__description">${recipe.description.substr(0, 175) + " ..."}</p>
                     </div>
                 </div>
             `;
@@ -51,7 +52,7 @@ class RecipeView
             htmlSegment = "";
 
             //Récupération de l'élément du DOM contenant la liste des ingrédients
-            let ingredientContainer = article.querySelector(".ingredients");
+            let ingredientContainer = article.querySelector(".main__content__recipe-card__secondary-information-container__list-keeper__ingredients");
 
             //Boucle sur chaques tags du photographe
             recipe.ingredients.forEach(ingredient => {
@@ -59,25 +60,25 @@ class RecipeView
                 //Création des items
                 let ingredientListItem = document.createElement("li");
 
+                ingredientListItem.classList.add("main__content__recipe-card__secondary-information-container__list-keeper__ingredients__item");
+
                 ingredientContainer.appendChild(ingredientListItem);
 
                 if(ingredient.quantity === undefined)
                 {
-                    htmlSegment = `<p>${ingredient.name}</p>`
+                    htmlSegment = `<p><strong>${ingredient.name}</strong></p>`
                 }
                 else if(ingredient.unit === undefined)
                 {
-                    htmlSegment = `<p>${ingredient.name} : ${ingredient.quantity}</p>`
+                    htmlSegment = `<p><strong>${ingredient.name}</strong> : ${ingredient.quantity}</p>`
                 }
                 else
                 {
-                    htmlSegment = `<p>${ingredient.name} : ${ingredient.quantity} ${ingredient.unit}</p>`
+                    htmlSegment = `<p><strong>${ingredient.name}</strong> : ${ingredient.quantity} ${ingredient.unit}</p>`
                 }
 
                 ingredientListItem.innerHTML = htmlSegment;
             });     
         });
-
-        console.log(this.recipes);
     }
 }
