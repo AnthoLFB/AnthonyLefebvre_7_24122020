@@ -4,6 +4,15 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Chargement du CSS -->
+        <link rel="stylesheet" href="scripts/css/reset.css">
+
+        <link rel="stylesheet" href="scripts/css/style.css">
+
+         <!-- Font awesome -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous"/>
+
         <title>Les Petits Plats</title>
     </head>
 
@@ -12,18 +21,58 @@
             <img role="img" class="header__img" src="images/logoLPP.png" alt="Logo de l'entreprise"/>
             <nav role="navigation" aria-label="navigation principale" class="header__nav">
                 <input class="header__nav__input" type="search" id="completeSearch" name="completeSearch" aria-label="Rechercher un élément sur tout le site" placeholder="Rechercher un ingrédient, appareil, ustensiles ou recette">
-                <button class="header__nav__btn" type="button" aria-label="Rechercher">Rechercher</button>
+                <button class="header__nav__btn" type="button" aria-label="Rechercher"><i class="fas fa-search"></i></button>
             </nav>
         </header>
 
         <main>
-            <nav role="navigation" aria-label="navigation secondaire">
-                <input type="search" id="searchByIngredient" name="searchByIngredient" aria-label="Rechercher un ingrédient" placeholder="Ingrédient">
-                <input type="search" id="searchByDevice" name="searchByDevice" aria-label="Rechercher un appareil" placeholder="Appareil">
-                <input type="search" id="searchByUtensils" name="searchByUtensils" aria-label="Rechercher un ustensiles" placeholder="Ustensiles">
+            <nav class="main__nav" role="navigation" aria-label="navigation secondaire">
+                
+                <div class="main__nav__dropdown">
+                    <button class="main__nav__dropdown__dropbtn main__nav__dropdown__dropbtn--blue">
+                        <input class="main__nav__dropdown__dropbtn__input" type="search" id="searchByIngredient" name="searchByIngredient" aria-label="Rechercher un ingrédient">
+                        <span class="chevron"></span>
+                    </button>
+
+                    <ul class="main__nav__dropdown__list main__nav__dropdown__list--blue">
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                        <li><a href="#">Link 4</a></li>
+                    </ul>
+                </div>
+
+                <div class="main__nav__dropdown">
+                    <button class="main__nav__dropdown__dropbtn main__nav__dropdown__dropbtn--green">
+                        <input class="main__nav__dropdown__dropbtn__input" type="search" id="searchByDevice" name="searchByDevice" aria-label="Rechercher un ingrédient" placeholder="Ingrédient">
+                        <span class="chevron"></span>
+                    </button>
+
+                    <ul class="main__nav__dropdown__list main__nav__dropdown__list--green">
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                        <li><a href="#">Link 4</a></li> 
+                    </ul>
+                </div>
+
+                <div class="main__nav__dropdown">
+                    <button class="main__nav__dropdown__dropbtn main__nav__dropdown__dropbtn--red">
+                        <input class="main__nav__dropdown__dropbtn__input" type="search" id="searchByUtensils" name="searchByUtensils" aria-label="Rechercher un ingrédient" placeholder="Ingrédient">
+                        <span class="chevron"></span>
+                    </button>
+
+                    <ul class="main__nav__dropdown__list main__nav__dropdown__list--red">
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                        <li><a href="#">Link 4</a></li>
+                    </ul>
+                </div>
+
             </nav>
 
-            <section class="content">
+            <section class="main__content">
                 <!-- Affichage automatique des recettes avec du JSON -->
             </section>
         </main>
@@ -39,6 +88,7 @@
 
         <script src="scripts/js/view/home_view.js"></script>
         <script src="scripts/js/view/recipe_view.js"></script>
+        <script src="scripts/js/view/resarch_placeholder_view.js"></script>
         
 
         <script src="scripts/js/app.js"></script>
