@@ -1,5 +1,5 @@
 /* Import des classes utilisées */
-import ResearchPlaceholderView from "./resarch_placeholder_view";
+import ResearchPlaceholderView from "./research_placeholder_view";
 import RecipeView from "./recipe_view";
 
 class HomeView
