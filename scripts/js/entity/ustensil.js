@@ -6,3 +6,5 @@ class Ustensil
         this.name = name;
     }
 }
+
+export default Ustensil;

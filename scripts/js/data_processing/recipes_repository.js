@@ -1,3 +1,7 @@
+/* Import des classes utilisées */
+import DataRepository from "./data_repository";
+import Recipe from "../entity/recipe";
+
 //Cette classe permet de récupérer toutes les recettes du fichier json donné
 class RecipesRepository extends DataRepository 
 {
@@ -17,4 +21,6 @@ class RecipesRepository extends DataRepository
             )));
     }
 }
+
+export default RecipesRepository;
   

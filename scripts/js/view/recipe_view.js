@@ -82,3 +82,5 @@ class RecipeView
         });
     }
 }
+
+export default RecipeView;

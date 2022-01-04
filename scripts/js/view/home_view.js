@@ -1,8 +1,13 @@
+/* Import des classes utilisées */
+import ResearchPlaceholderView from "./resarch_placeholder_view";
+import RecipeView from "./recipe_view";
+
 class HomeView
 {
     constructor(app)
     {
         this.app = app;
+        new ResearchPlaceholderView;
     }
 
     render()
@@ -11,3 +16,5 @@ class HomeView
         new RecipeView(this.app.recipes);
     }
 }
+
+export default HomeView;

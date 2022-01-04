@@ -13,3 +13,5 @@ class DataRepository
             .catch((err) => console.log("Une erreur est survenue : " + err));
     }
 }
+
+export default DataRepository;

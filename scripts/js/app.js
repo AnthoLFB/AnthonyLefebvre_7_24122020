@@ -1,3 +1,9 @@
+/* Import des classes utilisées */
+import RecipesRepository from "./data_processing/recipes_repository";
+import Ingredient from "./entity/ingredient";
+import Ustensil from "./entity/ustensil";
+import HomeView from "./view/home_view";
+
 //Classe permettant d'initialiser la vue et le js necessaire
 class App
 {

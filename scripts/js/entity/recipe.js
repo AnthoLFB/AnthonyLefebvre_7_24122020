@@ -13,3 +13,5 @@ class Recipe
         this.ustensils = ustensils; //Tableau d'objets ustensils
     }
 }
+
+export default Recipe;

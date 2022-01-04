@@ -25,4 +25,4 @@ class ResearchPlaceholderView
     };
 }
 
-new ResearchPlaceholderView;
+export default ResearchPlaceholderView;
