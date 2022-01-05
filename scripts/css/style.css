@@ -146,6 +146,11 @@ strong
     color: #FFFFFF;
 }
 
+.main__nav__dropdown:hover .main__nav__dropdown__dropbtn__input::placeholder
+{
+    opacity: 0.6;
+}
+
 /* ---- Liste ---- */
 .main__nav__dropdown__list
 {
@@ -186,69 +191,6 @@ strong
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* --- Design des recettes --- */
 .main__content
