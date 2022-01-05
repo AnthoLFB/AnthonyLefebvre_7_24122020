@@ -2,6 +2,7 @@
 import ResearchPlaceholderView from "./research_placeholder_view";
 import RecipeView from "./recipe_view";
 import IngredientsTagsView from "./ingredients_tags_view";
+import DevicesTagsView from "./devices_tags_view";
 
 class HomeView
 {
@@ -16,6 +17,7 @@ class HomeView
         //Appel la vue et passe un tableau de recettes en paramètre
         new RecipeView(this.app.recipes);
         new IngredientsTagsView(this.app.recipes);
+        new DevicesTagsView(this.app.recipes);
     }
 }
 
