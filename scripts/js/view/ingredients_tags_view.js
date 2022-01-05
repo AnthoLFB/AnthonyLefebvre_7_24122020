@@ -65,7 +65,7 @@ class IngredientsTagsView
             this.element.setAttribute("aria-label", "Permet d'afficher les recettes contenant l'ingrédient suivant : " + ingredient.name + ".");
 
             // Création du nom du lien
-            let htmlLinkName = document.createTextNode(ingredient.name);
+            let htmlLinkName = document.createTextNode(ingredient.name[0].toUpperCase() + ingredient.name.slice(1));
 
             // Ajout du texte
             this.element.appendChild(htmlLinkName);
