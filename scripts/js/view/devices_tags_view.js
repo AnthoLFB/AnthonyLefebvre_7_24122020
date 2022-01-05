@@ -56,7 +56,7 @@ class DevicesTagsView
             this.element.setAttribute("aria-label", "Permet d'afficher les recettes ou l'utilisation de l'ustensile suivant : " + device + ", est requise.");
 
             // Création du nom du lien
-            let htmlLinkName = document.createTextNode(device);
+            let htmlLinkName = document.createTextNode(device[0].toUpperCase() + device.slice(1));
 
             // Ajout du texte
             this.element.appendChild(htmlLinkName);
