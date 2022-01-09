@@ -173,6 +173,12 @@ strong
     color: #FFFFFF;
     font-weight: normal;
     text-decoration: none;
+    font-size: 1.3em;
+}
+
+.main__nav__dropdown__list li a:hover
+{
+    text-decoration: underline;
 }
 
 /* ---- Survol ---- */
