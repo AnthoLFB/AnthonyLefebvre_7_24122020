@@ -44,6 +44,9 @@ class IngredientsTagsView
         //Récupération du container
         let container = document.getElementById("ingredientsList");
 
+        //Supprime l'élément lorsque l'on tri les photographes par tags
+        this.removeElementsByClass("main__nav__dropdown__list__item");
+
         this.ingredients.forEach( ingredient => {
 
             // Création du li contenant le lien
@@ -77,6 +80,17 @@ class IngredientsTagsView
 
             listItem.appendChild(this.element);
         });
+    }
+
+    //Permet de retirer les éléments du dom déjà existant pour éviter les doublons
+    removeElementsByClass(className)
+    {
+        var elements = document.getElementsByClassName(className);
+
+        while(elements.length > 0)
+        {
+            elements[0].parentNode.removeChild(elements[0]);
+        }
     }
 }
 

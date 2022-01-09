@@ -12,6 +12,9 @@ class RecipeView
         //Récupération du container
         let container = document.querySelector('.main__content');
 
+        //Supprime l'élément lorsque l'on tri les photographes par tags
+        this.removeElementsByClass("main__content__recipe-card");
+
         //Boucle sur les recettes
         this.recipes.forEach(recipe => {
 
@@ -80,6 +83,17 @@ class RecipeView
                 ingredientListItem.innerHTML = htmlSegment;
             });     
         });
+    }
+
+    //Permet de retirer les éléments du dom déjà existant pour éviter les doublons
+    removeElementsByClass(className)
+    {
+        var elements = document.getElementsByClassName(className);
+
+        while(elements.length > 0)
+        {
+            elements[0].parentNode.removeChild(elements[0]);
+        }
     }
 }
 
