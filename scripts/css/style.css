@@ -269,3 +269,10 @@ strong
     text-align: justify;
     margin-right: 2em;
 }
+
+/* --- Message d'erreur --- */
+.main__content__error-msg
+{
+    font-size: 1.5em;
+    color: #8f0000;
+}
