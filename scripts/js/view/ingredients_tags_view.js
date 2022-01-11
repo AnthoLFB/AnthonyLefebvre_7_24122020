@@ -44,7 +44,7 @@ class IngredientsTagsView
         //Récupération du container
         let container = document.getElementById("ingredientsList");
 
-        //Supprime l'élément lorsque l'on tri les photographes par tags
+        //Supprime l'élément lorsque l'on tri les recettes
         this.removeElementsByClass("main__nav__dropdown__list__item");
 
         this.ingredients.forEach( ingredient => {
