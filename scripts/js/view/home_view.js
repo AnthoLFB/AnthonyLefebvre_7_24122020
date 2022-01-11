@@ -21,9 +21,7 @@ class HomeView
     launchResearch(e)
     {
         let numberOfCharacters = this.researchInput.value.length;
-        
-        console.log(numberOfCharacters);   
-        
+                
         if (numberOfCharacters >= 3)
         {
             //Si les trois caractères sont pas tapés, on lance une recherche.

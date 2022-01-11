@@ -4,7 +4,14 @@ class RecipeView
     {
         //Tableaux avec toutes les recettes
         this.recipes = recipes
-        this.createDomElement();
+        if(this.recipes.length == 0)
+        {
+            this.displayError();
+        }
+        else
+        {
+            this.createDomElement();
+        }
     }
 
     createDomElement()
@@ -12,8 +19,12 @@ class RecipeView
         //Récupération du container
         let container = document.querySelector('.main__content');
 
-        //Supprime l'élément lorsque l'on tri les photographes par tags
+        //Supprime l'élément lorsque l'on tri les recettes
         this.removeElementsByClass("main__content__recipe-card");
+
+        //Supprime le message d'erreur s'il y en a un
+        this.removeElementsByClass("main__content__error-msg");
+
 
         //Boucle sur les recettes
         this.recipes.forEach(recipe => {
@@ -83,6 +94,17 @@ class RecipeView
                 ingredientListItem.innerHTML = htmlSegment;
             });     
         });
+    }
+
+    displayError()
+    {
+        //Récupération du container
+        let container = document.querySelector('.main__content');
+
+        //Supprime l'ancien message d'erreur pour eviter les doublons
+        this.removeElementsByClass("main__content__error-msg");
+
+        container.innerHTML = '<p class="main__content__error-msg">Aucune recette ne correspond à votre critère… Vous pouvez essayer de rechercher « tarte aux pommes », « poisson », etc...</p>';
     }
 
     //Permet de retirer les éléments du dom déjà existant pour éviter les doublons
