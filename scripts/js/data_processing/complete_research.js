@@ -10,29 +10,28 @@ class CompleteResearch
 
     research()
     {
-        for(let i = 0; i < this.recipes.length; i++)
-        {
-            if(this.recipes[i].name.toLowerCase().includes(this.userSearchValue.toLowerCase()))
-            {
-                this.filteredRecipes.push(this.recipes[i]);
-            }
-            else if(this.recipes[i].description.toLowerCase().includes(this.userSearchValue.toLowerCase()))
-            {
-                this.filteredRecipes.push(this.recipes[i]);
-            }
-            else
-            {
-                for (let j = 0; j < this.recipes[i].ingredients.length; j++)
-                {
-                    if(this.recipes[i].ingredients[j].name.toLowerCase().includes(this.userSearchValue.toLowerCase()))
-                    {
-                        this.filteredRecipes.push(this.recipes[i]);
-                    }
-                }
-            }
-        }
+        return this.filteredRecipes = this.recipes.filter(recipe => this.checkingMatch(recipe, this.userSearchValue));
+    }
 
-        return this.filteredRecipes   
+    checkingMatch(recipe, userInput)
+    {
+        if(recipe.name.toLowerCase().includes(userInput.toLowerCase()))
+        {
+            return true;
+        }
+        else  if(recipe.description.toLowerCase().includes(userInput.toLowerCase()))
+        {
+            return true;
+        }
+        else
+        {
+            recipe.ingredients.forEach( ingredient => {
+                if(ingredient.name.toLowerCase().includes(userInput.toLowerCase()))
+                {
+                    return true;
+                }
+            });
+        }
     }
 }
 
