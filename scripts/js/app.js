@@ -2,6 +2,7 @@
 import RecipesRepository from "./data_processing/recipes_repository";
 import Ingredient from "./entity/ingredient";
 import Ustensil from "./entity/ustensil";
+import Device from "./entity/device";
 import HomeView from "./view/home_view";
 
 //Classe permettant d'initialiser la vue et le js necessaire
@@ -34,11 +35,13 @@ class App
                 
                 recipe.ingredients.forEach(ingredient => {
                     ingredients.push(new Ingredient(ingredient.ingredient, ingredient.quantity, ingredient.unit));   
-                })
+                });
 
                 recipe.ustensils.forEach(ustensil => {
                     ustensils.push(new Ustensil(ustensil));
-                })
+                });
+
+                recipe.appliance = new Device(recipe.appliance);
 
                 recipe.ingredients = ingredients;
                 recipe.ustensils = ustensils;
