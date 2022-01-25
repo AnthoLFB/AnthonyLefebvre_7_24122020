@@ -1,9 +1,7 @@
 /* Import des classes utilisées */
 import ResearchPlaceholderView from "./research_placeholder_view";
 import RecipeView from "./recipe_view";
-import IngredientsListView from "./ingredients_list_view";
-import DevicesListView from "./devices_list_view";
-import UstensilsListView from "./ustensils_list_view";
+import TagsList from "./tags_list";
 import CompleteResearch from "../data_processing/complete_research";
 import EventDispatcher from "../event_dispatcher/event_dispatcher";
 
@@ -44,51 +42,8 @@ class HomeView
 
     render()
     {
-        let selectedTags = [];
-
-        this.recipes.forEach(recipe => {
-
-            recipe.ingredients.forEach(ingredient => {
-                if(ingredient.selected == true)
-                {
-                    selectedTags.push(ingredient);
-                }
-            });
-
-            if(recipe.appliance.selected == true)
-            {
-                selectedTags.push(recipe.appliance);
-            }
-
-            recipe.ustensils.forEach(ustensil => {
-                if(ustensil.selected == true)
-                {
-                    selectedTags.push(ustensil);
-                }
-            });
-        });
-
-        console.log(selectedTags);
-
-        if(selectedTags.length === 0 && this.researchInput.value.length < 3)
-        {
-            this.recipes = this.app.recipes
-        }
-        else if(selectedTags.length === 0 && this.researchInput.value.length >= 3)
-        {  
-            this.recipes = this.recipes;
-        }
-        else
-        {
-            this.recipes = this.recipes.filter((recipe) => selectedTags.filter((tag) => recipe.ingredients.includes(tag)).length > 0);
-            //console.log(test);
-        }
-        
-
         //Appel la vue et passe un tableau de recettes en paramètre
-        new IngredientsListView(this.recipes, this.eventDispatcher);
-        new DevicesListView(this.recipes, this.eventDispatcher);
-        new UstensilsListView(this.recipes, this.eventDispatcher);
+        new TagsList(this.recipes, this.eventDispatcher);
         new RecipeView(this.recipes);
     }
 }
