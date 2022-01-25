@@ -2,7 +2,7 @@
 import TagView from "./tag_view";
 
 //Cette classe permet de créer les tags contenant les appareils utilisée pour les recettes
-class TagsList
+class TagsListView
 {   
     constructor(recipes, eventDispatcher)
     {
@@ -145,4 +145,4 @@ class TagsList
     }
 }
 
-export default TagsList;
+export default TagsListView;
