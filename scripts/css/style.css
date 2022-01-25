@@ -198,6 +198,53 @@ strong
     border-bottom-right-radius: 0;
 }
 
+/*Tags selectionnés*/
+.main__selected-tags__list
+{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main__selected-tags__list__item
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-bottom: 1em;
+    margin-right: 1.2em;
+
+    color: #FFFFFF;
+    font-size: 1.3em;
+
+    min-width: 100px;
+    padding: 1em;
+
+    border-radius: 0.3em;
+}
+
+.main__selected-tags__list__item p
+{
+    margin-right: 0.5em;
+}
+
+.main__selected-tags__list__item--blue
+{
+    background-color: #3781F4;
+}
+
+.main__selected-tags__list__item--green
+{
+    background-color: #68D9A4;
+}
+
+.main__selected-tags__list__item--red
+{
+    background-color: #EC6554;
+}
+
 /* --- Design des recettes --- */
 .main__content
 {
