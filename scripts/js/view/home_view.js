@@ -1,7 +1,7 @@
 /* Import des classes utilisées */
 import ResearchPlaceholderView from "./research_placeholder_view";
 import RecipeView from "./recipe_view";
-import TagsList from "./tags_list";
+import TagsListView from "./tags_list_view";
 import CompleteResearch from "../data_processing/complete_research";
 import EventDispatcher from "../event_dispatcher/event_dispatcher";
 
@@ -43,7 +43,7 @@ class HomeView
     render()
     {
         //Appel la vue et passe un tableau de recettes en paramètre
-        new TagsList(this.recipes, this.eventDispatcher);
+        new TagsListView(this.recipes, this.eventDispatcher);
         new RecipeView(this.recipes);
     }
 }
