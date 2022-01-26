@@ -20,49 +20,56 @@ class TagsListView
     //Supprime les doublons
     removalDuplicates()
     {
-        
-        this.recipes.forEach(recipe => {
+        if(typeof this.recipes === "undefined" || this.recipes.length == 0)
+        {
+            this.ingredients = [];
+            this.devices = [];
+            this.ustensils = [];
+            this.checkError();
+        }
+        else
+        {
+            this.recipes.forEach(recipe => {
 
-            //Recupère les ingrédients sans doublons
-            recipe.ingredients.forEach(ingredient => {
-               
-                let ingredientTag = this.ingredients.find((ingredientTag) => ingredientTag.name.toLowerCase() === ingredient.name.toLowerCase());
-                
-                if(typeof ingredientTag === "undefined")
+                //Recupère les ingrédients sans doublons
+                recipe.ingredients.forEach(ingredient => {
+                   
+                    let ingredientTag = this.ingredients.find((ingredientTag) => ingredientTag.name.toLowerCase() === ingredient.name.toLowerCase());
+                    
+                    if(typeof ingredientTag === "undefined")
+                    {
+                        this.ingredients.push(ingredient);
+                    }                
+                });
+    
+                //Recupère les ustensiles sans doublons
+                recipe.ustensils.forEach(ustensil => {
+                   
+                    let ustensilTag = this.ustensils.find((ustensilTag) => ustensilTag.name.toLowerCase() === ustensil.name.toLowerCase());
+                    
+                    if(typeof ustensilTag === "undefined")
+                    {
+                        this.ustensils.push(ustensil);
+                    }                
+                });
+    
+                //Recupère les appareils sans doublons
+                let deviceTag = this.devices.find((deviceTag) => deviceTag.name.toLowerCase() === recipe.appliance.name.toLowerCase());
+    
+                if(typeof deviceTag === "undefined")
                 {
-                    this.ingredients.push(ingredient);
-                }                
+                    this.devices.push(recipe.appliance);
+                }
             });
-
-            //Recupère les ustensiles sans doublons
-            recipe.ustensils.forEach(ustensil => {
-               
-                let ustensilTag = this.ustensils.find((ustensilTag) => ustensilTag.name.toLowerCase() === ustensil.name.toLowerCase());
-                
-                if(typeof ustensilTag === "undefined")
-                {
-                    this.ustensils.push(ustensil);
-                }                
-            });
-
-            //Recupère les appareils sans doublons
-            let deviceTag = this.devices.find((deviceTag) => deviceTag.name.toLowerCase() === recipe.appliance.name.toLowerCase());
-
-            if(typeof deviceTag === "undefined")
-            {
-                this.devices.push(recipe.appliance);
-            }
-        });
-
-        console.log(this.ingredients);
-        
-        //Triage des tableaux
-        this.ingredients.sort(this.sortArray);
-        this.devices.sort(this.sortArray); 
-        this.ustensils.sort(this.sortArray); 
-
-        //Création du html
-        this.checkError();
+            
+            //Triage des tableaux
+            this.ingredients.sort(this.sortArray);
+            this.devices.sort(this.sortArray); 
+            this.ustensils.sort(this.sortArray); 
+    
+            //Création du html
+            this.checkError();
+        }
     }
 
     //Trie par ordre alphabétique un tableau d'objet
