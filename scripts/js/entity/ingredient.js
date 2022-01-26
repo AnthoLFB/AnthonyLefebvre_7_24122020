@@ -6,6 +6,7 @@ class Ingredient
         this.name = name;
         this.quantity = quantity;
         this.unit = unit;
+        this.selected = false;
     }
 }
 
