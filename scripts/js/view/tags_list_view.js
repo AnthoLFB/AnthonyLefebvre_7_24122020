@@ -90,7 +90,6 @@ class TagsListView
         {
             this.ingredients.forEach( ingredient => {
                 this.createDomElement(ingredientsContainer, ingredient);
-                console.log(ingredient);
             });
         }
 
