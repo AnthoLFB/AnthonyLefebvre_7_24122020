@@ -4,7 +4,7 @@ class RecipeView
     {
         //Tableaux avec toutes les recettes
         this.recipes = recipes
-        if(this.recipes.length == 0)
+        if(typeof this.recipes === "undefined" || this.recipes.length == 0)
         {
             this.displayError();
         }
