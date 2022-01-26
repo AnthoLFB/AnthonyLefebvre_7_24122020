@@ -4,6 +4,7 @@ import RecipeView from "./recipe_view";
 import TagsListView from "./tags_list_view";
 import CompleteResearch from "../data_processing/complete_research";
 import EventDispatcher from "../event_dispatcher/event_dispatcher";
+import ResearchByTags from "../data_processing/research_by_tags";
 
 class HomeView
 {
@@ -42,6 +43,7 @@ class HomeView
 
     render()
     {
+        new ResearchByTags(this.recipes);
         //Appel la vue et passe un tableau de recettes en paramètre
         new TagsListView(this.recipes, this.eventDispatcher);
         new RecipeView(this.recipes);
