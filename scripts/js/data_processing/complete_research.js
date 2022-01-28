@@ -4,21 +4,21 @@ class CompleteResearch
     constructor(userSearchValue, recipes)
     {
         this.userSearchValue = userSearchValue;
-        this.recipes = recipes
+        this.recipes = recipes;
         this.filteredRecipes = [];
     }
 
-    research()
+    *research()
     {
         for(let i = 0; i < this.recipes.length; i++)
         {
             if(this.recipes[i].name.toLowerCase().includes(this.userSearchValue.toLowerCase()))
             {
-                this.filteredRecipes.push(this.recipes[i]);
+                yield this.recipes[i];
             }
             else if(this.recipes[i].description.toLowerCase().includes(this.userSearchValue.toLowerCase()))
             {
-                this.filteredRecipes.push(this.recipes[i]);
+                yield this.recipes[i];
             }
             else
             {
@@ -26,13 +26,11 @@ class CompleteResearch
                 {
                     if(this.recipes[i].ingredients[j].name.toLowerCase().includes(this.userSearchValue.toLowerCase()))
                     {
-                        this.filteredRecipes.push(this.recipes[i]);
+                        yield this.recipes[i];
                     }
                 }
             }
         }
-
-        return this.filteredRecipes   
     }
 }
 
