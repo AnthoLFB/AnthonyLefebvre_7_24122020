@@ -28,10 +28,21 @@ class HomeView
                 
         if (numberOfCharacters >= 3)
         {
+
+            this.recipes = [];
             //Si les trois caractères sont pas tapés, on lance une recherche.
-            let filteredRecipes = new CompleteResearch(this.researchInput.value, this.app.recipes).research();
-            this.recipes = filteredRecipes
-            this.render();
+            const matchingRecipes = new CompleteResearch(this.researchInput.value, this.app.recipes).research();            
+            
+            for (const recipe of matchingRecipes) {
+                this.recipes.push(recipe);
+                this.render();
+            }
+
+            if(this.recipes.length === 0)
+            {
+                this.recipes = [];
+                this.render();
+            }
         }
         else
         {
@@ -43,7 +54,13 @@ class HomeView
 
     render()
     {
+<<<<<<< HEAD
         new ResearchByTags(this.recipes);
+=======
+        //this.recipes = new TagChek(this.recipes);
+        //return du tableau si filtre ?
+
+>>>>>>> devAlgo_ProgrammationNative
         //Appel la vue et passe un tableau de recettes en paramètre
         new TagsListView(this.recipes, this.eventDispatcher);
         new RecipeView(this.recipes);
