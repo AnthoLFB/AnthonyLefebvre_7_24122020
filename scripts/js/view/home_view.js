@@ -12,6 +12,7 @@ class HomeView
     {
         this.app = app;
         this.recipes = this.app.recipes;
+        this.recipeBeforeFilter = [];
         new ResearchPlaceholderView;
 
         this.eventDispatcher = new EventDispatcher();
@@ -35,12 +36,14 @@ class HomeView
             
             for (const recipe of matchingRecipes) {
                 this.recipes.push(recipe);
+                this.recipeBeforeFilter = this.recipes;
                 this.render();
             }
 
             if(this.recipes.length === 0)
             {
                 this.recipes = [];
+                //this.recipeBeforeFilter = this.recipes;
                 this.render();
             }
         }
@@ -48,15 +51,23 @@ class HomeView
         {
             //Si les trois caractères ne sont pas tapés, on affiche toutes les recettes.
             this.recipes = this.app.recipes;
+            this.recipeBeforeFilter = this.recipes;
             this.render();
         }
     }
 
     render()
     {
+        if(this.recipeBeforeFilter.length == 0)
+        {
+            this.recipeBeforeFilter = this.app.recipes;
+        }
+
         let recipesFilteredByTags = [];
-        recipesFilteredByTags = new ResearchByTags(this.recipes);
+        recipesFilteredByTags = new ResearchByTags(this.recipeBeforeFilter);
         this.recipes = recipesFilteredByTags.recipes;
+
+        
 
         //Appel la vue et passe un tableau de recettes en paramètre
         new TagsListView(this.recipes, this.eventDispatcher);
