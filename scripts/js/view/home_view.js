@@ -54,13 +54,10 @@ class HomeView
 
     render()
     {
-<<<<<<< HEAD
-        new ResearchByTags(this.recipes);
-=======
-        //this.recipes = new TagChek(this.recipes);
-        //return du tableau si filtre ?
+        let recipesFilteredByTags = [];
+        recipesFilteredByTags = new ResearchByTags(this.recipes);
+        this.recipes = recipesFilteredByTags.recipes;
 
->>>>>>> devAlgo_ProgrammationNative
         //Appel la vue et passe un tableau de recettes en paramètre
         new TagsListView(this.recipes, this.eventDispatcher);
         new RecipeView(this.recipes);
