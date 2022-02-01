@@ -32,18 +32,21 @@ class HomeView
 
             this.recipes = [];
             //Si les trois caractères sont pas tapés, on lance une recherche.
-            const matchingRecipes = new CompleteResearch(this.researchInput.value, this.app.recipes).research();            
+            const matchingRecipes = new CompleteResearch(this.researchInput.value, this.app.recipes).research();  
+
+            //console.log(matchingRecipes.next());
+            
             
             for (const recipe of matchingRecipes) {
-                this.recipes.push(recipe);
-                this.recipeBeforeFilter = this.recipes;
-                this.render();
+                console.log(recipe);
+                //this.recipes.push(recipe);
+                //this.recipeBeforeFilter = this.recipes;
+                //this.render();
             }
 
             if(this.recipes.length === 0)
             {
                 this.recipes = [];
-                //this.recipeBeforeFilter = this.recipes;
                 this.render();
             }
         }
@@ -51,21 +54,21 @@ class HomeView
         {
             //Si les trois caractères ne sont pas tapés, on affiche toutes les recettes.
             this.recipes = this.app.recipes;
-            this.recipeBeforeFilter = this.recipes;
+            //this.recipeBeforeFilter = this.recipes;
             this.render();
         }
     }
 
     render()
     {
-        if(this.recipeBeforeFilter.length == 0)
+        /*if(this.recipeBeforeFilter.length == 0)
         {
             this.recipeBeforeFilter = this.app.recipes;
         }
 
         let recipesFilteredByTags = [];
         recipesFilteredByTags = new ResearchByTags(this.recipeBeforeFilter);
-        this.recipes = recipesFilteredByTags.recipes;
+        this.recipes = recipesFilteredByTags.recipes;*/
 
         
 

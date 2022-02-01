@@ -10,27 +10,16 @@ class CompleteResearch
 
     *research()
     {
-        for(let i = 0; i < this.recipes.length; i++)
+       yield this.recipes.filter((recipe) => this.filter(recipe, this.userSearchValue/*, ustensils, appareils, ingredients*/));
+    }
+
+    filter(recipe, userInput/*, ustensils, appareils, ingredients*/) 
+    {
+        if(recipe.name.toLowerCase().includes(userInput.toLowerCase())) 
         {
-            if(this.recipes[i].name.toLowerCase().includes(this.userSearchValue.toLowerCase()))
-            {
-                yield this.recipes[i];
-            }
-            else if(this.recipes[i].description.toLowerCase().includes(this.userSearchValue.toLowerCase()))
-            {
-                yield this.recipes[i];
-            }
-            else
-            {
-                for (let j = 0; j < this.recipes[i].ingredients.length; j++)
-                {
-                    if(this.recipes[i].ingredients[j].name.toLowerCase().includes(this.userSearchValue.toLowerCase()))
-                    {
-                        yield this.recipes[i];
-                    }
-                }
-            }
+            return true;
         }
+        
     }
 }
 
