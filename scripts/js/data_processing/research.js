@@ -8,24 +8,27 @@ class Research
 
     *research(userSearchValue)
     {
-       yield this.recipes.filter((recipe) => this.filter(recipe, userSearchValue));
-    }
-
-    filter(recipe, userInput)
-    {
-        if(userInput != "")
+        for(let i = 0; i < this.recipes.length; i++)
         {
-            if(recipe.name.toLowerCase().includes(userInput.toLowerCase()) || recipe.description.toLowerCase().includes(userInput.toLowerCase()) || recipe.ingredients.some((ingredient) => ingredient.name.toLowerCase().includes(userInput.toLowerCase()))) 
+            if(this.recipes[i].name.toLowerCase().includes(userSearchValue.toLowerCase()))
             {
-                return true;
+                yield this.recipes[i];
+            }
+            else if(this.recipes[i].description.toLowerCase().includes(userSearchValue.toLowerCase()))
+            {
+                yield this.recipes[i];
             }
             else
             {
-                return false
+                for (let j = 0; j < this.recipes[i].ingredients.length; j++)
+                {
+                    if(this.recipes[i].ingredients[j].name.toLowerCase().includes(userSearchValue.toLowerCase()))
+                    {
+                        yield this.recipes[i];
+                    }
+                }
             }
         }
-
-        return false
     }
 
     researchByTag(selectedTags)
