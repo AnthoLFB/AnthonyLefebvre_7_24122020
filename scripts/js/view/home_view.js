@@ -77,6 +77,7 @@ class HomeView
             if(this.recipes.length === 0)
             {
                 this.recipes = [];
+                this.searchHistory = this.recipes;
                 this.render();
             }
         }
@@ -91,22 +92,14 @@ class HomeView
 
     render()
     {
-        if(this.searchHistory.length == 0)
+        if(this.searchHistory.length == 0 && this.recipes.length != 0)
         {
             this.searchHistory = this.app.recipes;
         }
-        
-        if(this.selectedTags.length > 0)
-        {
-            let recipesFilteredByTags = [];
-            //recipesFilteredByTags = new Research(this.recipesMatchingUserSearch).researchByTags(this.selectedTags);
-            recipesFilteredByTags = new Research(this.searchHistory).researchByTag(this.selectedTags);
-            this.recipes = recipesFilteredByTags;
-        }
-        else
-        {
-            this.recipes = this.searchHistory;
-        }
+    
+        let recipesFilteredByTags = [];
+        recipesFilteredByTags = new Research(this.searchHistory).researchByTag(this.selectedTags);
+        this.recipes = recipesFilteredByTags;
 
         //Appel la vue et passe un tableau de recettes en paramètre
         new TagsListView(this.recipes, this.eventDispatcher);
