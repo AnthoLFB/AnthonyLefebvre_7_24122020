@@ -30,22 +30,29 @@ class Research
 
     researchByTag(selectedTags)
     {
+        if(selectedTags.length == 0)
+        {
+            return this.recipes;
+        }
+        else
+        {
+            selectedTags.forEach(tag =>{
+
+                let filteredRecipes = [];
+                this.recipes.forEach(recipe => {
+                    if(recipe.ingredients.some((ingredient) => tag.indexOf(ingredient.name.toLowerCase()) >= 0) || recipe.ustensils.some((ustensil) => tag.indexOf(ustensil.name.toLowerCase()) >= 0) || recipe.appliance.name.toLowerCase().includes(tag))
+                    {
+                        filteredRecipes.push(recipe);
+                    }
+                });
+
+                this.recipes = filteredRecipes;
+                filteredRecipes = [];
+            })
+
+            return this.recipes;      
+        }
         
-        selectedTags.forEach(tag =>{
-
-            let filteredRecipes = [];
-            this.recipes.forEach(recipe => {
-                if(recipe.ingredients.some((ingredient) => tag.indexOf(ingredient.name.toLowerCase()) >= 0) || recipe.ustensils.some((ustensil) => tag.indexOf(ustensil.name.toLowerCase()) >= 0) || recipe.appliance.name.toLowerCase().includes(tag))
-                {
-                    filteredRecipes.push(recipe);
-                }
-            });
-
-            this.recipes = filteredRecipes;
-            filteredRecipes = [];
-        })
-
-        return this.recipes;
     }
 }
 
