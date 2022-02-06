@@ -2,9 +2,8 @@
 import ResearchPlaceholderView from "./research_placeholder_view";
 import RecipeView from "./recipe_view";
 import TagsListView from "./tags_list_view";
-import CompleteResearch from "../data_processing/complete_research";
+import Research from "../data_processing/research";
 import EventDispatcher from "../event_dispatcher/event_dispatcher";
-import ResearchByTags from "../data_processing/research_by_tags";
 
 class HomeView
 {
@@ -12,24 +11,25 @@ class HomeView
     {
         this.app = app;
         this.recipes = this.app.recipes;
-        this.recipeBeforeFilter = [];
+        this.searchHistory = [];
         this.selectedTags = [];
         new ResearchPlaceholderView;
 
         this.eventDispatcher = new EventDispatcher();
         this.eventDispatcher.register('tagSelected');
+        this.eventDispatcher.addEventListener('tagSelected', this.updateSelectedTags.bind(this));
         this.eventDispatcher.addEventListener('tagSelected', this.render.bind(this));
-        //this.eventDispatcher.addEventListener('tagSelected', this.updateSelectedTags.bind(this));
+        
 
         this.researchInput = document.getElementById("completeSearch");
         this.researchInput.addEventListener("keyup", this.launchResearch.bind(this));
     }
 
-    /*updateSelectedTags()
+    updateSelectedTags()
     {   
         this.selectedTags = [];     
 
-        this.recipes.forEach(recipe => {
+        this.app.recipes.forEach(recipe => {
 
             recipe.ingredients.forEach(ingredient => {
                 if(ingredient.selected == true)
@@ -50,7 +50,7 @@ class HomeView
                 }
             });
         });
-    }*/
+    }
 
     launchResearch()
     {
@@ -59,24 +59,19 @@ class HomeView
         if (numberOfCharacters >= 3)
         {
 
-            this.recipes42 = [];
-            console.log(this.recipes42);
+            this.recipes = [];
 
             //Si les trois caractères sont pas tapés, on lance une recherche.
-            const matchingRecipes = new CompleteResearch(this.researchInput.value, this.app.recipes).research();
+            const matchingRecipes = new Research(this.app.recipes).research(this.researchInput.value);
  
            for (const recipes of matchingRecipes)
            {
-                let test = new Array;
-                for (const testee of recipes) 
+                for (const recipe of recipes) 
                 {
-                   
-                    test.push(testee);
-                    console.log(test);
+                    this.recipes.push(recipe);
+                    this.searchHistory = this.recipes;
+                    this.render();
                 }
-                //this.recipes.push(recipe);
-                //this.recipeBeforeFilter = this.recipes;
-                //this.render();
            }
 
             if(this.recipes.length === 0)
@@ -89,22 +84,29 @@ class HomeView
         {
             //Si les trois caractères ne sont pas tapés, on affiche toutes les recettes.
             this.recipes = this.app.recipes;
-            //this.recipeBeforeFilter = this.recipes;
+            this.searchHistory = this.recipes;
             this.render();
         }
     }
 
     render()
     {
-        /*if(this.recipeBeforeFilter.length == 0)
+        if(this.searchHistory.length == 0)
         {
-            this.recipeBeforeFilter = this.app.recipes;
+            this.searchHistory = this.app.recipes;
         }
-
-        let recipesFilteredByTags = [];
-        recipesFilteredByTags = new ResearchByTags(this.recipeBeforeFilter);
-        this.recipes = recipesFilteredByTags.recipes;*/        
         
+        if(this.selectedTags.length > 0)
+        {
+            let recipesFilteredByTags = [];
+            //recipesFilteredByTags = new Research(this.recipesMatchingUserSearch).researchByTags(this.selectedTags);
+            recipesFilteredByTags = new Research(this.searchHistory).researchByTag(this.selectedTags);
+            this.recipes = recipesFilteredByTags;
+        }
+        else
+        {
+            this.recipes = this.searchHistory;
+        }
 
         //Appel la vue et passe un tableau de recettes en paramètre
         new TagsListView(this.recipes, this.eventDispatcher);
