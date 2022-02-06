@@ -1,6 +1,6 @@
 /* Import des classes utilisées */
-import DataRepository from "./data_repository";
-import Recipe from "../entity/recipe";
+import DataRepository from "./data_repository.js";
+import Recipe from "../entity/recipe.js";
 
 //Cette classe permet de récupérer toutes les recettes du fichier json donné
 class RecipesRepository extends DataRepository 

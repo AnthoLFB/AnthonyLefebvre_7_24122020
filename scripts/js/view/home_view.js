@@ -1,9 +1,9 @@
 /* Import des classes utilisées */
-import ResearchPlaceholderView from "./research_placeholder_view";
-import RecipeView from "./recipe_view";
-import TagsListView from "./tags_list_view";
-import Research from "../data_processing/research";
-import EventDispatcher from "../event_dispatcher/event_dispatcher";
+import ResearchPlaceholderView from "./research_placeholder_view.js";
+import RecipeView from "./recipe_view.js";
+import TagsListView from "./tags_list_view.js";
+import Research from "../data_processing/research.js";
+import EventDispatcher from "../event_dispatcher/event_dispatcher.js";
 
 class HomeView
 {
