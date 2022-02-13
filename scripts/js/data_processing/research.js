@@ -6,26 +6,25 @@ class Research
         this.recipes = recipes;
     }
 
-    *research(userSearchValue)
+    research(userSearchValue)
     {
-       yield this.recipes.filter((recipe) => this.filter(recipe, userSearchValue));
+       return this.recipes.filter((recipe) => this.filter(recipe, userSearchValue));
     }
 
     filter(recipe, userInput)
     {
-        if(userInput != "")
+        if(userInput == "")
+        {
+            return false;
+        }
+        else
         {
             if(recipe.name.toLowerCase().includes(userInput.toLowerCase()) || recipe.description.toLowerCase().includes(userInput.toLowerCase()) || recipe.ingredients.some((ingredient) => ingredient.name.toLowerCase().includes(userInput.toLowerCase()))) 
             {
                 return true;
             }
-            else
-            {
-                return false
-            }
         }
-
-        return false
+        return false;
     }
 
     researchByTag(selectedTags)
@@ -36,21 +35,35 @@ class Research
         }
         else
         {
-            selectedTags.forEach(tag =>{
+            let filteredRecipes = [];
 
-                let filteredRecipes = [];
-                this.recipes.forEach(recipe => {
-                    if(recipe.ingredients.some((ingredient) => tag.indexOf(ingredient.name.toLowerCase()) >= 0) || recipe.ustensils.some((ustensil) => tag.indexOf(ustensil.name.toLowerCase()) >= 0) || recipe.appliance.name.toLowerCase().includes(tag))
-                    {
-                        filteredRecipes.push(recipe);
-                    }
+            this.recipes.forEach(recipe => {
+
+                let valueToCheck = [];
+
+                //valueToCheck = recipe.ingredients.concat(recipe.ustensils).concat(recipe.appliance);
+
+                recipe.ingredients.forEach(ingredient => {
+                    valueToCheck.push(ingredient.name.toLowerCase());
                 });
 
-                this.recipes = filteredRecipes;
-                filteredRecipes = [];
-            })
+                recipe.ustensils.forEach(ustensil => {
+                    valueToCheck.push(ustensil.name.toLowerCase());
+                });
 
-            return this.recipes;      
+                valueToCheck.push(recipe.appliance.name.toLowerCase());        
+
+                const isContained = (tag) => valueToCheck.includes(tag);
+
+                if(selectedTags.every(isContained))
+                {
+                    filteredRecipes.push(recipe);
+                }
+            });
+
+            this.recipes = filteredRecipes;
+
+            return this.recipes;
         }
         
     }
