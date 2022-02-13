@@ -64,14 +64,11 @@ class HomeView
             //Si les trois caractères sont pas tapés, on lance une recherche.
             const matchingRecipes = new Research(this.app.recipes).research(this.researchInput.value);
  
-           for (const recipes of matchingRecipes)
-           {
-                for (const recipe of recipes) 
-                {
-                    this.recipes.push(recipe);
-                    this.searchHistory = this.recipes;
-                    this.render();
-                }
+           for (const recipe of matchingRecipes)
+           {             
+                this.recipes.push(recipe);
+                this.searchHistory = this.recipes;
+                this.render(); 
            }
 
             if(this.recipes.length === 0)
