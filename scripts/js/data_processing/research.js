@@ -6,25 +6,9 @@ class Research
         this.recipes = recipes;
     }
 
-    research(userSearchValue)
+    research(userInput)
     {
-       return this.recipes.filter((recipe) => this.filter(recipe, userSearchValue));
-    }
-
-    filter(recipe, userInput)
-    {
-        if(userInput == "")
-        {
-            return false;
-        }
-        else
-        {
-            if(recipe.name.toLowerCase().includes(userInput.toLowerCase()) || recipe.description.toLowerCase().includes(userInput.toLowerCase()) || recipe.ingredients.some((ingredient) => ingredient.name.toLowerCase().includes(userInput.toLowerCase()))) 
-            {
-                return true;
-            }
-        }
-        return false;
+       return this.recipes.filter((recipe) => recipe.name.toLowerCase().includes(userInput.toLowerCase()) || recipe.description.toLowerCase().includes(userInput.toLowerCase()) || recipe.ingredients.some((ingredient) => ingredient.name.toLowerCase().includes(userInput.toLowerCase())));
     }
 
     researchByTag(selectedTags)
