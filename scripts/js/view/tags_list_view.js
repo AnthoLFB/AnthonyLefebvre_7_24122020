@@ -1,5 +1,5 @@
 //Import classes utiles
-import TagView from "./tag_view";
+import TagView from "./tag_view.js";
 
 //Cette classe permet de créer les tags contenant les appareils utilisée pour les recettes
 class TagsListView

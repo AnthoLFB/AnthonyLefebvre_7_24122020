@@ -1,9 +1,9 @@
 /* Import des classes utilisées */
-import RecipesRepository from "./data_processing/recipes_repository";
-import Ingredient from "./entity/ingredient";
-import Ustensil from "./entity/ustensil";
-import Device from "./entity/device";
-import HomeView from "./view/home_view";
+import RecipesRepository from "./data_processing/recipes_repository.js";
+import Ingredient from "./entity/ingredient.js";
+import Ustensil from "./entity/ustensil.js";
+import Device from "./entity/device.js";
+import HomeView from "./view/home_view.js";
 
 //Classe permettant d'initialiser la vue et le js necessaire
 class App
