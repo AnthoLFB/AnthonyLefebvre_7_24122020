@@ -25,8 +25,6 @@ class Research
 
                 let valueToCheck = [];
 
-                //valueToCheck = recipe.ingredients.concat(recipe.ustensils).concat(recipe.appliance);
-
                 recipe.ingredients.forEach(ingredient => {
                     valueToCheck.push(ingredient.name.toLowerCase());
                 });
